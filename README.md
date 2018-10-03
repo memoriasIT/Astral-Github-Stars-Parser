@@ -1,3 +1,16 @@
+
+<h1 align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Octicons-star.svg/896px-Octicons-star.svg.png" width="150">
+  <br>
+  Github Stars Management
+</h1>
+<h3>
+This is originally an article from my blog. You can read it here:
+</h3>
+<a href="https://memoriasit.github.io/Github-Stars">Article page</a>
+
+<hr>
+
 <h2>The problem</h2>
 
 <p>
