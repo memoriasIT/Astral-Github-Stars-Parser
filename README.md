@@ -22,7 +22,7 @@ There, you are able to use options such as search, tags...</p>
 <p>Astral let's you export your stars as a JSON, I thought that was great! Until I saw the format of the JSON</p>
 
 <pre>
-        {% raw %}
+     
 "2": {
     "id": 1039967,
     "user_id": 16684,
@@ -43,7 +43,7 @@ There, you are able to use options such as search, tags...</p>
         }
     ]
 },
-{% endraw %}
+
 </pre>
 
 <p>Unless your friend has access to the github api and a lot of time to spare this is not a very convenient way to share your stars with your friends</p>
@@ -60,17 +60,18 @@ We need to read the original astral JSON and get the repo name fore every repo i
 </ul>
 
 <p>First of all we need to read the file, so we use the open() and close() functions:</p>
-{% highlight python %}
+
+<pre>
 # Read File 
 json_data=open(json_file)
 data = json.load(json_data)
 json_data.close()
-{% endhighlight %}
+</pre>
 
 
 <p>After that we need to create our output file and save our stars, we can easily do that with this little code:</p>
 
-{% highlight python %}
+<pre>
 file = open('OUTPUT', 'w')
 # Request 
 url = 'https://api.github.com/repositories/'
@@ -88,7 +89,7 @@ for x in data:
         pass
         
 file.close()
-{% endhighlight %}
+</pre>
 
 <p>First of all we create the file, then we do requests to the github api with the repo id. <br>
 As we can see the repo id was found in <code>astraljson -> x -> repo_id </code>. We also add a Oauth token for the github api because of api limitations (60 per day). </p>
@@ -103,31 +104,31 @@ As we can see the repo id was found in <code>astraljson -> x -> repo_id </code>.
 
 <p>I also wanted to print the stars tagged with the "unixporn" tag, so I added a couple of lines to check that:</p>
 
-{% highlight python %}
+<pre>
 for y in data[x]["tags"]:
         if (y["name"] == "unixporn"):
             found = True
-{% endhighlight %}
+</pre>
 
 <p>I created a boolean called <code>found</code> which is used later to determine if the current item needs to be printed or <br>
 The output looks something like this:</p>
 <pre>
-    {% raw %}
+
     vi3m - nejni-marji/vi3m :  A really basic tool to use vim-style chained keypresses in i3.     (https://github.com/nejni-marji/vi3m)
     powerlevel9k - bhilburn/powerlevel9k : The most awesome Powerline theme for ZSH around!     (https://github.com/bhilburn/powerlevel9k)
     dotfiles - SteffenC/dotfiles : None     (https://github.com/SteffenC/dotfiles)
     dotfiles - djsavvy/dotfiles : None     (https://github.com/djsavvy/dotfiles)
-{% endraw %}
+
 </pre>
 
 <p>And we can run the sort command and have something like:</p>
 
 <pre>
-    {% raw %}
+
     art - gawlk/art : :art: A smart theme generator (https://github.com/gawlk/art)
     autorice - UltraNyan/autorice : Graphical utility to edit and manage your config files. (https://github.com/UltraNyan/autorice)
     bin - gawlk/bin : :pineapple: List of scripts that make my life much easier (https://github.com/gawlk/bin)
-{% endraw %}
+
 </pre>
 <p>If you want to see the full code you can check my github repo with the quick snippet! <br>
 <a href="">Github repository link</a>
